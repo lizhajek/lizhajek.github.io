@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pSUPER SED Lab — Liz Hajek - Penn State Geosciences</title>
+    <title>pSUPER SED Lab — Penn State Geosciences</title>
     <meta name="description" content="Penn State University PaleoEnvironmental Reconstruction & Surface Earth Dynamics Lab. We use the sedimentary record to understand how rivers and landscapes respond to environmental change." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -65,7 +65,6 @@
       .hero-inner { max-width: 1100px; margin: 0 auto; position: relative; }
       .hero-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-bottom: 3rem; }
       .hero-logo-col { display: flex; align-items: center; justify-content: center; }
-      .hero-logo-large { width: 100%; max-width: 480px; height: auto; filter: drop-shadow(0 4px 32px rgba(74,173,224,0.4)); }
       @media (max-width: 700px) { .hero-columns { grid-template-columns: 1fr; } .hero-logo-col { order: -1; } }
       .hero-eyebrow { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--river); margin-bottom: 1.1rem; }
       .hero-title { font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 3.6rem); line-height: 1.1; color: var(--white); margin-bottom: 0.4rem; }
@@ -152,6 +151,20 @@
         *, *::before, *::after { transition: none !important; animation: none !important; }
         html { scroll-behavior: auto; }
       }
+
+      /* Slideshow */
+      .slideshow { position: relative; width: 100%; border-radius: 12px; overflow: hidden; aspect-ratio: 4/3; background: rgba(255,255,255,0.06); }
+      .slideshow-slides { position: relative; width: 100%; height: 100%; }
+      .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.7s ease; }
+      .slide.active { opacity: 1; }
+      .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+      .slide-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.35); border: none; color: white; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; z-index: 10; transition: background 0.2s; }
+      .slide-arrow:hover { background: rgba(0,0,0,0.6); }
+      .slide-arrow.prev { left: 10px; }
+      .slide-arrow.next { right: 10px; }
+      .slide-dots { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 10; }
+      .slide-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.4); border: none; cursor: pointer; padding: 0; transition: background 0.2s; }
+      .slide-dot.active { background: white; }
     </style>
   </head>
   <body>
@@ -178,7 +191,7 @@
             <div class="hero-text">
               <p class="hero-eyebrow">Penn State University · Department of Geosciences</p>
               <h1 class="hero-title" id="hero-heading">pSUPER SED Lab</h1>
-              <p class="hero-subtitle">Penn State University PaleoEnvironmental Reconstruction &amp; Surface Earth Dynamics</p>
+              <p class="hero-subtitle">PaleoEnvironmental Reconstruction &amp; Surface Earth Dynamics</p>
               <p class="hero-intro">We study <strong>ancient rivers and sedimentary basins</strong> to understand how landscapes have responded to environmental change through deep time and support the sustainable development of underground water, mineral, and energy resources. Our work combines <strong>fieldwork</strong>, <strong>remote sensing and subsurface interpretation</strong>, <strong>physical experiments</strong>, and <strong>numerical modeling</strong> to connect the processes happening on planetary surfaces to the patterns we see preserved in sedimentary rocks.</p>
               <div class="hero-links">
                 <a href="#projects" class="btn btn-primary">Our Research</a>
@@ -186,7 +199,32 @@
               </div>
             </div>
             <div class="hero-logo-col">
-              <img src="assets/img/lab-logo.png" alt="pSUPER SED Lab logo" class="hero-logo-large" />
+              <div class="slideshow" id="heroSlideshow" role="region" aria-label="Lab photo slideshow" aria-live="polite">
+                <div class="slideshow-slides">
+                  <div class="slide active"><img src="assets/img/field-01.png" alt="pSUPER SED Lab logo" loading="eager" /></div>
+                  <div class="slide"><img src="assets/img/field-02.jpg" alt="Three geologists walking over a gravelly bar and wading in a shallow, rippled pond on the Atigun River, Brooks Range, Alaska; cloudy blue skies over a mountainous backdrop with green tundra plants in the low hills near the river banks" loading="lazy" /></div>
+                  <div class="slide"><img src="assets/img/field-03.jpg" alt="Silt-covered, tan ripples of the Gertzle River, Alaska, in the foreground, with a bridge and the Alaska Range mountains in the distant background" loading="lazy" /></div>
+                  <div class="slide"><img src="assets/img/field-04.jpg" alt="Group of geology students in bright, high-visibility vests and helmets observing a Pennsylvania roadside outcrop with a horse-driven buggy driving past in the background" loading="lazy" /></div>
+                  <div class="slide"><img src="assets/img/field-05.jpg" alt="Geologists wearing green, black, red, brown, and teal jackets measuring steeply dipping, gravelly sedimentary rocks in Death Valley" loading="lazy" /></div>
+                  <div class="slide"><img src="assets/img/field-06.jpg" alt="Five geologists leaping joyfully in front of a white-tan rock outcropping under a clear blue sky in the Wind River Basin, Wyoming" loading="lazy" /></div>
+                  <div class="slide"><img src="assets/img/field-07.jpg" alt="Two geologists measuring sediments on the braided Atigun River, Alaska; dark, layered mountains in the background grade into green, sloping tundra; Alaska oil pipeline visible between the river and the mountains" loading="lazy" /></div>
+                  <div class="slide"><img src="assets/img/field-08.jpg" alt="Geologist in a black t-shirt and dark tan sun hat observes red-tan and dark brown rock outcrop of the Huesca fluvial fan system, Spain" loading="lazy" /></div>
+                  <div class="slide"><img src="assets/img/field-09.jpg" alt="Layered, white-cream colored sedimentary beds of the Laguna del Hunco system, Patagonia, Argentina" loading="lazy" /></div>
+                </div>
+                <button class="slide-arrow prev" aria-label="Previous slide">&#8249;</button>
+                <button class="slide-arrow next" aria-label="Next slide">&#8250;</button>
+                <div class="slide-dots" role="tablist" aria-label="Slideshow navigation">
+                  <button class="slide-dot active" aria-label="Go to slide 1"></button>
+                  <button class="slide-dot" aria-label="Go to slide 2"></button>
+                  <button class="slide-dot" aria-label="Go to slide 3"></button>
+                  <button class="slide-dot" aria-label="Go to slide 4"></button>
+                  <button class="slide-dot" aria-label="Go to slide 5"></button>
+                  <button class="slide-dot" aria-label="Go to slide 6"></button>
+                  <button class="slide-dot" aria-label="Go to slide 7"></button>
+                  <button class="slide-dot" aria-label="Go to slide 8"></button>
+                  <button class="slide-dot" aria-label="Go to slide 9"></button>
+                </div>
+              </div>
             </div>
           </div>
           <p class="questions-label">Central questions driving our research</p>
@@ -365,5 +403,34 @@
     <footer>
       <p>© 2026 pSUPER SED Lab · Penn State University · <a href="mailto:eah21@psu.edu">eah21@psu.edu</a></p>
     </footer>
-  </body>
+  
+    <script>
+      (function () {
+        const ss = document.getElementById('heroSlideshow');
+        if (!ss) return;
+        const slides = ss.querySelectorAll('.slide');
+        const dots = ss.querySelectorAll('.slide-dot');
+        let current = 0, timer;
+
+        function goTo(n) {
+          slides[current].classList.remove('active');
+          dots[current].classList.remove('active');
+          current = (n + slides.length) % slides.length;
+          slides[current].classList.add('active');
+          dots[current].classList.add('active');
+        }
+
+        function startTimer() { timer = setInterval(() => goTo(current + 1), 4000); }
+        function resetTimer() { clearInterval(timer); startTimer(); }
+
+        ss.querySelector('.next').addEventListener('click', () => { goTo(current + 1); resetTimer(); });
+        ss.querySelector('.prev').addEventListener('click', () => { goTo(current - 1); resetTimer(); });
+        dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); resetTimer(); }));
+        ss.addEventListener('mouseenter', () => clearInterval(timer));
+        ss.addEventListener('mouseleave', startTimer);
+
+        startTimer();
+      })();
+    </script>
+</body>
 </html>
